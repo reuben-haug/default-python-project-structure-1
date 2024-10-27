@@ -2,7 +2,6 @@
 FROM python:3.11-slim
 
 # Set environment variables
-ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Set the working directory
@@ -12,31 +11,34 @@ WORKDIR /app
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     build-essential \
-    libpq-dev \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    libssl-dev \
+    libffi-dev \
+    python3-dev \
+    python3-venv \
+    git \
+    curl && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install Docker
+RUN curl -fsSL https://get.docker.com -o get-docker.sh && \
+    sh get-docker.sh && \
+    usermod -aG docker $USER && \
+    newgrp docker
+
+# Copy the project files into the Docker container
+COPY . /app
 
 # Install Python dependencies
-COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
 
-# Create project structure
-RUN mkdir -p /app/src /app/tests /app/docs /app/lib /app/data /app/scripts /app/config /app/bin /app/assets /app/notebook
-
-# Install Sphinx
-RUN pip install sphinx
-
-# Initialize Sphinx documentation
-RUN sphinx-quickstart -q -p "Default Python Project Structure" -a "Reuben Haug" --ext-autodoc --ext-viewcode --ext-napoleon --makefile --sep /app/docs
-
-# Update index.rst
-RUN echo "\n   overview\n   api" >> /app/docs/source/index.rst
-
-# Copy the rest of the application code
-COPY . /app/
+# Run the project template script to initialize the project structure
+RUN chmod +x project_template.sh && \
+    ./project_template.sh
 
 # Expose the port the app runs on
 EXPOSE 8000
 
-# Run the application
-CMD ["python", "src/main.py"]
+# Set the entrypoint for the container
+ENTRYPOINT ["./entrypoint.sh"]

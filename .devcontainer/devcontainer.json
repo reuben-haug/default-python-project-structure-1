@@ -1,20 +1,18 @@
 {
     "name": "Python Development Environment",
-    "dockerFile": "Dockerfile",
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "python.pythonPath": "/usr/local/bin/python",
-                "python.testing.pytestEnabled": true,
-                "python.linting.enabled": true,
-                "python.formatting.provider": "black"
-            },
-            "extensions": [
-                "ms-python.python",
-                "ms-python.vscode-pylance",
-                "ms-python.flake8"
-            ]
-        }
+    "build": {
+        "dockerfile": "Dockerfile"
     },
-    "postCreateCommand": "pip install -r requirements.txt && sphinx-quickstart -q -p 'Default Python Project Structure' -a 'Reuben Haug' --ext-autodoc --ext-viewcode --ext-napoleon --makefile --sep docs && echo '\n   overview\n   api' >> docs/source/index.rst"
+    "settings": {
+        "python.pythonPath": "/usr/local/bin/python",
+        "python.testing.pytestEnabled": true,
+        "python.linting.flake8Enabled": true,
+        "python.linting.enabled": true,
+        "python.formatting.provider": "black"
+    },
+    "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+    ],
+    "postCreateCommand": "pip install -r requirements.txt"
 }

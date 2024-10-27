@@ -7,6 +7,30 @@ then
     exit
 fi
 
+# Check if Docker is installed
+if ! command -v docker &> /dev/null
+then
+    echo "Docker could not be found. Installing Docker..."
+    # Install Docker based on the OS
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        sudo apt-get update
+        sudo apt-get install -y docker.io
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        brew install --cask docker
+    elif [[ "$OSTYPE" == "cygwin" || "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
+        choco install docker-desktop
+    else
+        echo "Unsupported OS. Please install Docker manually."
+        exit 1
+    fi
+fi
+
+# Add the user to the docker group
+sudo usermod -aG docker $USER
+
+# Avoid logout/login by creating a new group session
+newgrp docker
+
 # Prompt the user for the environment name
 read -p "Enter the name of the virtual environment and project folder: " ENV_NAME
 
@@ -16,7 +40,7 @@ if [ -z "$ENV_NAME" ]; then
 fi
 
 # Create a new conda environment
-conda create -n $ENV_NAME python=3.10 -y
+conda create -n $ENV_NAME python=3.11 -y
 
 # Activate the environment
 source activate $ENV_NAME
@@ -124,61 +148,63 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 EOF
 
-    # Initialize Sphinx documentation
-    sphinx-quickstart -q -p "$project_name" -a "$(git config user.name)" --ext-autodoc --ext-viewcode --ext-napoleon --makefile --sep docs
-
-    # Update index.rst
-    echo "\n   overview\n   api" >> docs/source/index.rst
-
-    # Write overview.rst
-    cat <<EOF > docs/source/overview.rst
-Overview
-========
-
-Definition of Done
-------------------
-
-The goal of this project is to create a template repository for Agile Python projects, designed for personal portfolio projects. The template should have a default folder structure with commonly used sub-directories such as docs, notebook, src, and tests. The template should also include a .gitignore, README, and LICENSE file with the MIT license. The template should be platform-agnostic but primarily focused on GitHub Codespaces and VS Code integration.
-
-Who
----
-
-This template is intended for developers who want to create Agile Python projects for their personal portfolio.
-
-What
-----
-
-The template provides a default folder structure, essential files, and integration with GitHub Codespaces and VS Code.
-
-When
-----
-
-This template can be used at the inception phase of a new project to quickly set up a standardized project structure.
-
-Where
------
-
-The template can be used on any platform, but it is primarily focused on GitHub Codespaces and VS Code integration.
-
-Why
----
-
-The template helps developers quickly set up a standardized project structure, making it easier to manage and maintain their projects.
-EOF
-
-    # Write API.rst
-    cat <<EOF > docs/source/api.rst
-API
-===
-
-.. todo:: Add API documentation as modules are created.
-EOF
-
     git init
     cd ..
 }
 
 # Create project structure
 create_project_structure "$ENV_NAME"
+
+# Initialize Sphinx documentation
+cd "$ENV_NAME/docs" || exit
+sphinx-quickstart -q -p "$ENV_NAME" -a "Author Name" --sep -v 0.1 --ext-autodoc --ext-viewcode --makefile --batchfile
+
+# Update index.rst with necessary sections
+cat <<EOF > index.rst
+.. $ENV_NAME documentation master file, created by
+   sphinx-quickstart on $(date).
+
+Welcome to $ENV_NAME's documentation!
+=====================================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   overview
+   api
+
+Indices and tables
+==================
+
+* :ref:\`genindex\`
+* :ref:\`modindex\`
+* :ref:\`search\`
+EOF
+
+# Create overview.rst with the definition of done
+cat <<EOF > overview.rst
+Overview
+========
+
+Definition of Done
+------------------
+
+- Who: Define the stakeholders and target audience.
+- What: Describe the main objectives and deliverables.
+- When: Outline the timeline and milestones.
+- Where: Specify the locations or platforms involved.
+- Why: Explain the purpose and value of the project.
+EOF
+
+# Create api.rst with a title and a .. todo:: note
+cat <<EOF > api.rst
+API
+===
+
+.. todo:: Add API documentation here.
+EOF
 
 echo "Project structure created, tools installed, and git repository initialized in the conda environment '$ENV_NAME'."
