@@ -82,3 +82,56 @@ default-python-project-structure/
 4. The `devcontainer.json` file configures the VS Code settings and extensions for the development environment.
 5. After the Codespace is created, the `postCreateCommand` in `devcontainer.json` will automatically install the required dependencies from `requirements.txt`.
 6. You can start working on your project in the Codespace with the pre-configured development environment.
+
+## Installation Steps
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/reuben-haug/default-python-project-structure.git
+    ```
+
+2. Navigate to the project directory:
+    ```sh
+    cd default-python-project-structure
+    ```
+
+3. Enable write permissions for the 'project_template.sh' script:
+    ```sh
+    sudo chmod +x project_template.sh
+    ```
+
+4. Run the 'project_template.sh' script to set up the project structure and environment:
+    ```sh
+    ./project_template.sh
+    ```
+
+5. Create a new virtual environment and activate it:
+    ```sh
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
+
+6. Install the required dependencies:
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+7. Start working on your project by adding your code to the appropriate directories.
+
+## Order of Downloading Packages
+
+1. Install the required dependencies listed in `requirements.txt`:
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+2. Install any additional packages as needed for your project.
+
+## Nesting or Ignoring Environment-Related Files & Directories
+
+1. Ensure that environment-related files and directories are properly nested or ignored in the `.gitignore` file.
+2. Add any additional environment-related files or directories to the `.gitignore` file as needed.
+
+## Running the Script
+
+The `project_template.sh` file should run `pip install -r requirements.txt` to install the required dependencies for the project.
