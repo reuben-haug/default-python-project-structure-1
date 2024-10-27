@@ -170,3 +170,55 @@ If you encounter any issues during the template installation, follow these steps
     - Ensure that `conda` and `hatch` tools are installed and configured if you are using them.
 
 By addressing these points, you should be able to resolve the issues and have a smoother development experience in Visual Studio Code.
+
+## Contributing
+
+We welcome contributions to improve this template repository. To contribute, follow these steps:
+
+1. **Fork the repository**:
+    - Click the "Fork" button at the top right corner of this repository to create a copy of the repository in your GitHub account.
+
+2. **Clone your forked repository**:
+    ```sh
+    git clone https://github.com/<your-username>/default-python-project-structure.git
+    cd default-python-project-structure
+    ```
+
+3. **Create a new branch**:
+    ```sh
+    git checkout -b feature/your-feature-name
+    ```
+
+4. **Make your changes**:
+    - Implement your changes and ensure that they follow the project's coding standards and guidelines.
+
+5. **Test your changes**:
+    - Run the tests to ensure that your changes do not introduce any issues.
+    ```sh
+    pytest
+    ```
+
+6. **Commit your changes**:
+    ```sh
+    git add .
+    git commit -m "Add your commit message here"
+    ```
+
+7. **Push your changes to your forked repository**:
+    ```sh
+    git push origin feature/your-feature-name
+    ```
+
+8. **Create a pull request**:
+    - Open your forked repository on GitHub and click the "New pull request" button.
+    - Provide a clear and descriptive title and description for your pull request.
+    - Submit the pull request for review.
+
+9. **Review and feedback**:
+    - Your pull request will be reviewed by the repository maintainers.
+    - Address any feedback or requested changes.
+
+10. **Merge**:
+    - Once your pull request is approved, it will be merged into the main repository.
+
+Thank you for contributing to this project!

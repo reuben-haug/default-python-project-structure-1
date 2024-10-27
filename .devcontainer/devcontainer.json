@@ -16,5 +16,5 @@
             ]
         }
     },
-    "postCreateCommand": "pip install -r requirements.txt"
+    "postCreateCommand": "pip install -r requirements.txt && sphinx-quickstart -q -p 'Default Python Project Structure' -a 'Reuben Haug' --ext-autodoc --ext-viewcode --ext-napoleon --makefile --sep docs && echo '\n   overview\n   api' >> docs/source/index.rst"
 }

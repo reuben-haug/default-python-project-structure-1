@@ -40,6 +40,16 @@
                 "isDefault": false
             },
             "problemMatcher": []
+        },
+        {
+            "label": "Build Sphinx Documentation",
+            "type": "shell",
+            "command": "sphinx-build -b html docs/source docs/build",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": []
         }
     ]
 }
