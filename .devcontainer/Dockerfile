@@ -1,5 +1,5 @@
 # Use the official Python image from the Docker Hub
-FROM python:3.11-slim
+FROM mcr.microsoft.com/devcontainers/universal:2-linux
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
