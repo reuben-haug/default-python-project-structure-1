@@ -16,6 +16,10 @@ RUN apt-get update && \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# Add a non-root user
+RUN useradd -m myuser
+USER myuser
+
 # Install Python dependencies
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r /app/requirements.txt
