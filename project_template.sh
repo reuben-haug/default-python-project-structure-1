@@ -27,7 +27,7 @@ create_project_structure() {
     mkdir "$project_name"
     cd "$project_name" || exit
     mkdir src
-    mkdir test
+    mkdir tests
     mkdir docs
     mkdir lib
     mkdir data
@@ -35,6 +35,7 @@ create_project_structure() {
     mkdir config
     mkdir bin
     mkdir assets
+    mkdir notebook
     touch README.md
     echo "# $project_name" > README.md
     echo "This is the $project_name project." >> README.md

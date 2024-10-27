@@ -73,3 +73,12 @@ default-python-project-structure/
 - Use the `src` directory for data processing scripts and machine learning models.
 - Document your project in the `docs` directory using Sphinx.
 - Write tests for your data processing and machine learning code in the `tests` directory.
+
+## Using the Template in GitHub Codespaces
+
+1. Open the repository in GitHub Codespaces.
+2. The `.devcontainer` directory contains the necessary configuration files for GitHub Codespaces.
+3. The `Dockerfile` sets up the development environment with Python and necessary tools.
+4. The `devcontainer.json` file configures the VS Code settings and extensions for the development environment.
+5. After the Codespace is created, the `postCreateCommand` in `devcontainer.json` will automatically install the required dependencies from `requirements.txt`.
+6. You can start working on your project in the Codespace with the pre-configured development environment.

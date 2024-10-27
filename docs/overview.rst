@@ -30,4 +30,3 @@ Why
 ---
 
 The template helps developers quickly set up a standardized project structure, making it easier to manage and maintain their projects.
-

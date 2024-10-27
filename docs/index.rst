@@ -13,6 +13,11 @@ Welcome to Default Python Project Structure's documentation!
    overview
    api
 
+   architecture
+   design_decisions
+   how_to_test_it
+   how_to_use_it
+
 Indices and tables
 ==================
 
