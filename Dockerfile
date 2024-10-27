@@ -33,10 +33,6 @@ COPY . /app
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
-# Run the project template script to initialize the project structure
-RUN chmod +x project_template.sh && \
-    ./project_template.sh
-
 # Expose the port the app runs on
 EXPOSE 8000
 

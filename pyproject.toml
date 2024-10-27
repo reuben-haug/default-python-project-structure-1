@@ -6,14 +6,6 @@ authors = ["Reuben Haug <reuben.haug@example.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-sphinx = "^4.2.0"
-pytest = "^6.2.5"
-flake8 = "^3.9.2"
-mypy = "^0.910"
-
-[tool.poetry.dev-dependencies]
-tox = "^3.24.4"
-black = "^21.9b0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -45,10 +45,6 @@ conda create -n $ENV_NAME python=3.11 -y
 # Activate the environment
 source activate $ENV_NAME
 
-# Install required tools
-conda install sphinx behave pytest pytest-cov mypy flake8 -y
-pip install pip-tools tox
-
 # Function to create project structure
 create_project_structure() {
     project_name=$1
@@ -63,6 +59,7 @@ create_project_structure() {
     mkdir config
     mkdir bin
     mkdir assets
+    mkdir notebook
     touch README.md
     echo "# $project_name" > README.md
     echo "This is the $project_name project." >> README.md
@@ -152,20 +149,15 @@ EOF
     cd ..
 }
 
-# Create project structure
-create_project_structure "$ENV_NAME"
-
-# Initialize Sphinx documentation
-cd "$ENV_NAME/docs" || exit
-sphinx-quickstart -q -p "$ENV_NAME" -a "Author Name" --sep -v 0.1 --ext-autodoc --ext-viewcode --makefile --batchfile
-
-# Update index.rst with necessary sections
-cat <<EOF > index.rst
-.. $ENV_NAME documentation master file, created by
+# Function to initialize Sphinx documentation
+initialize_sphinx() {
+    sphinx-quickstart docs --quiet --project "$project_name" --author "$(git config user.name)" --release "0.1.0"
+    cat <<EOF > docs/index.rst
+.. $project_name documentation master file, created by
    sphinx-quickstart on $(date).
 
-Welcome to $ENV_NAME's documentation!
-=====================================
+Welcome to $project_name's documentation!
+=========================================
 
 Contents:
 
@@ -183,28 +175,15 @@ Indices and tables
 * :ref:\`modindex\`
 * :ref:\`search\`
 EOF
+}
 
-# Create overview.rst with the definition of done
-cat <<EOF > overview.rst
-Overview
-========
+# Create project structure
+create_project_structure "$ENV_NAME"
 
-Definition of Done
-------------------
+# Initialize Sphinx documentation
+initialize_sphinx
 
-- Who: Define the stakeholders and target audience.
-- What: Describe the main objectives and deliverables.
-- When: Outline the timeline and milestones.
-- Where: Specify the locations or platforms involved.
-- Why: Explain the purpose and value of the project.
-EOF
-
-# Create api.rst with a title and a .. todo:: note
-cat <<EOF > api.rst
-API
-===
-
-.. todo:: Add API documentation here.
-EOF
+# Install dependencies from requirements.txt
+pip install -r requirements.txt
 
 echo "Project structure created, tools installed, and git repository initialized in the conda environment '$ENV_NAME'."
