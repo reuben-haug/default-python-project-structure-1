@@ -16,3 +16,23 @@
     ],
     "postCreateCommand": "pip install -r requirements.txt"
 }
+{
+    "name": "Python Development Environment",
+    "dockerFile": "Dockerfile",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.pythonPath": "/usr/local/bin/python",
+                "python.testing.pytestEnabled": true,
+                "python.linting.enabled": true,
+                "python.formatting.provider": "black"
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.flake8"
+            ]
+        }
+    },
+    "postCreateCommand": "pip install -r requirements.txt && sphinx-quickstart -q -p 'Default Python Project Structure' -a 'Reuben Haug' --ext-autodoc --ext-viewcode --ext-napoleon --makefile --sep docs && echo '\n   overview\n   api' >> docs/source/index.rst"
+}
