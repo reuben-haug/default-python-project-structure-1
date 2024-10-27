@@ -125,8 +125,23 @@ EOF
     cd ..
 }
 
+# Function to read template files, replace placeholders, and write final files
+process_template_files() {
+    project_name=$1
+    template_dir="template_files"
+    output_dir="$project_name"
+
+    for template_file in "$template_dir"/*.template; do
+        output_file="$output_dir/$(basename "$template_file" .template)"
+        sed "s/{{PROJECT_NAME}}/$project_name/g" "$template_file" > "$output_file"
+    done
+}
+
 # Create project structure
 create_project_structure "$ENV_NAME"
+
+# Process template files
+process_template_files "$ENV_NAME"
 
 # Enable write permissions for project_template.sh
 chmod +x project_template.sh
