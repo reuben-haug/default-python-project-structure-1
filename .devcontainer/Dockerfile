@@ -21,7 +21,7 @@ RUN useradd -m myuser
 USER myuser
 
 # Install Python dependencies
-COPY requirements.txt /app/
+COPY ../requirements.txt /app/
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Create project structure
