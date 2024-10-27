@@ -21,10 +21,6 @@ conda create -n $ENV_NAME python=3.11 -y
 # Activate the environment
 source activate $ENV_NAME
 
-# Install required tools
-conda install sphinx behave pytest pytest-cov mypy flake8 -y
-pip install pip-tools tox
-
 # Function to create project structure
 create_project_structure() {
     project_name=$1
@@ -130,5 +126,11 @@ EOF
 
 # Create project structure
 create_project_structure "$ENV_NAME"
+
+# Enable write permissions for project_template.sh
+chmod +x project_template.sh
+
+# Install packages listed in requirements.txt
+pip install -r requirements.txt
 
 echo "Project structure created, tools installed, and git repository initialized in the conda environment '$ENV_NAME'."

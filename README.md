@@ -14,18 +14,28 @@ This repository is a template for Agile Python projects, designed for personal p
     cd default-python-project-structure
     ```
 
-3. Create a new virtual environment and activate it:
+3. Enable write permissions for the 'project_template.sh' script:
+    ```sh
+    sudo chmod +x project_template.sh
+    ```
+
+4. Run the 'project_template.sh' script to set up the project structure and environment:
+    ```sh
+    ./project_template.sh
+    ```
+
+5. Create a new virtual environment and activate it:
     ```sh
     python -m venv venv
     source venv/bin/activate  # On Windows use `venv\Scripts\activate`
     ```
 
-4. Install the required dependencies:
+6. Install the required dependencies:
     ```sh
     pip install -r requirements.txt
     ```
 
-5. Start working on your project by adding your code to the appropriate directories.
+7. Start working on your project by adding your code to the appropriate directories.
 
 ## Default Folder Structure
 
