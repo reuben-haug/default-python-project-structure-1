@@ -146,4 +146,10 @@ process_template_files "$ENV_NAME"
 # Install packages listed in requirements.txt
 pip install -r requirements.txt
 
+# Add the user to the docker group
+sudo usermod -aG docker $USER
+
+# Use the newgrp docker command to avoid logging out
+newgrp docker
+
 echo "Project structure created, tools installed, and git repository initialized in the conda environment '$ENV_NAME'."

@@ -1,137 +1,110 @@
 # Default Python Project Structure Template
 
-This repository is a template for Agile Python projects, designed for personal portfolio projects. The template provides a default folder structure with commonly used sub-directories and includes essential files such as `.gitignore`, `README`, and `LICENSE` with the MIT license. The template is platform-agnostic but primarily focused on GitHub Codespaces and VS Code integration.
+This repository is a template repository for Agile Python projects for personal portfolio projects. The template has a default folder structure with commonly used sub-directories such as `docs`, `notebook`, `src`, and `tests`. The template also includes a `.gitignore`, `README`, and `LICENSE` file with the MIT license.
 
-## How to Use This Template
+## Folder Structure
 
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/reuben-haug/default-python-project-structure.git
-    ```
-
-2. Navigate to the project directory:
-    ```sh
-    cd default-python-project-structure
-    ```
-
-3. Enable write permissions for the 'project_template.sh' script:
-    ```sh
-    sudo chmod +x project_template.sh
-    ```
-
-4. Run the 'project_template.sh' script to set up the project structure and environment:
-    ```sh
-    ./project_template.sh
-    ```
-
-5. Create a new virtual environment and activate it:
-    ```sh
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-    ```
-
-6. Install the required dependencies:
-    ```sh
-    pip install -r requirements.txt
-    ```
-
-7. Start working on your project by adding your code to the appropriate directories.
-
-## Default Folder Structure
-
-The template provides the following folder structure:
+The folder structure of the template is as follows:
 
 ```
 default-python-project-structure/
 │
-├── .vscode/             # VS Code configuration files
+├── docs/
 │
-├── data/                # Directory for datasets
+├── notebook/
 │
-├── docs/                # Directory for project documentation
+├── src/
 │
-├── notebook/            # Directory for Jupyter notebooks
+├── tests/
 │
-├── src/                 # Directory for source code
-│   └── __init__.py      # Empty file to mark the directory as a Python package
-│
-├── tests/               # Directory for test files
-│   └── test_example.py  # Example test file using pytest
-│
-├── .gitignore           # Git ignore file
-├── LICENSE              # MIT License file
-├── README.md            # Project README file
-└── requirements.txt     # File for listing project dependencies
+├── .gitignore
+├── LICENSE
+├── README.md
+├── requirements.txt
+└── project_template.sh
 ```
-
-## Example Usage
-
-### Data Science Project
-
-- Utilize the `notebook` directory for Jupyter notebooks to perform data analysis and visualization.
-- Store datasets in the `data` directory.
-- Use the `src` directory for data processing scripts and machine learning models.
-- Document your project in the `docs` directory using Sphinx.
-- Write tests for your data processing and machine learning code in the `tests` directory.
-
-## Using the Template in GitHub Codespaces
-
-1. Open the repository in GitHub Codespaces.
-2. The `.devcontainer` directory contains the necessary configuration files for GitHub Codespaces.
-3. The `Dockerfile` sets up the development environment with Python and necessary tools.
-4. The `devcontainer.json` file configures the VS Code settings and extensions for the development environment.
-5. After the Codespace is created, the `postCreateCommand` in `devcontainer.json` will automatically install the required dependencies from `requirements.txt`.
-6. You can start working on your project in the Codespace with the pre-configured development environment.
 
 ## Installation Steps
 
-1. Clone the repository:
+1. **Clone the repository**:
     ```sh
     git clone https://github.com/reuben-haug/default-python-project-structure.git
-    ```
-
-2. Navigate to the project directory:
-    ```sh
     cd default-python-project-structure
     ```
 
-3. Enable write permissions for the 'project_template.sh' script:
+2. **Enable write permissions for the `project_template.sh` script**:
     ```sh
     sudo chmod +x project_template.sh
     ```
 
-4. Run the 'project_template.sh' script to set up the project structure and environment:
+3. **Run the `project_template.sh` script**:
     ```sh
     ./project_template.sh
     ```
 
-5. Create a new virtual environment and activate it:
+4. **Add the `$USER` to the 'docker' group**:
     ```sh
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    sudo usermod -aG docker $USER
     ```
 
-6. Install the required dependencies:
+5. **Run the `newgrp docker` command to avoid logging out**:
     ```sh
-    pip install -r requirements.txt
+    newgrp docker
     ```
 
-7. Start working on your project by adding your code to the appropriate directories.
+## Requirements
 
-## Order of Downloading Packages
+The `requirements.txt` file includes the necessary packages with appropriate version numbers:
+```
+sphinx==4.2.0
+pytest==6.2.5
+flake8==3.9.2
+mypy==0.910
+tox==3.24.4
+black==21.9b0
+```
 
-1. Install the required dependencies listed in `requirements.txt`:
-    ```sh
-    pip install -r requirements.txt
-    ```
+## Documentation
 
-2. Install any additional packages as needed for your project.
+The `docs` directory contains Sphinx documentation for the project. The following files are included:
+- `index.rst`: The main index file for the documentation.
+- `overview.rst`: The project overview.
+- `API.rst`: The API documentation.
 
-## Nesting or Ignoring Environment-Related Files & Directories
+## Troubleshooting
 
-1. Ensure that environment-related files and directories are properly nested or ignored in the `.gitignore` file.
-2. Add any additional environment-related files or directories to the `.gitignore` file as needed.
+If you encounter any issues during the template installation, follow these steps:
 
-## Running the Script
+1. **Remove deprecated linting settings**:
+    - Remove the deprecated `python.linting.flake8Enabled` setting from your `.vscode/settings.json` and `.devcontainer/devcontainer.json` files.
+    - Install the `flake8` extension from the Visual Studio Code marketplace using the command:
+        ```sh
+        code --install-extension ms-python.flake8
+        ```
 
-The `project_template.sh` file should run `pip install -r requirements.txt` to install the required dependencies for the project.
+2. **Ensure the directory exists**:
+    - Verify that the directory `/workspaces/default-python-project-structure-1/.pixi/envs` exists or update your configuration to point to the correct directory.
+
+3. **Verify Python interpreter path**:
+    - Ensure that the Python interpreter path set in `.vscode/settings.json` and `.devcontainer/devcontainer.json` is correct and the interpreter is accessible.
+
+4. **Install missing tools**:
+    - Install `pyenv` and `poetry` if needed for managing Python versions and dependencies using the following commands:
+        ```sh
+        # Install pyenv
+        curl https://pyenv.run | bash
+
+        # Install poetry
+        curl -sSL https://install.python-poetry.org | python3 -
+        ```
+
+5. **Verify environment paths**:
+    - Ensure that the paths to your Python interpreter and virtual environments are correctly set up and accessible.
+
+6. **Check Pylance language server**:
+    - Ensure that the Pylance language server is starting correctly for Python IntelliSense.
+
+7. **Verify Conda and Hatch tools**:
+    - Ensure that `conda` and `hatch` tools are installed and configured if you are using them.
+
+By addressing these points, you should be able to resolve the issues and have a smoother development experience in Visual Studio Code.
