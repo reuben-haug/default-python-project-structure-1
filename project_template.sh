@@ -51,7 +51,7 @@ create_project_structure() {
     mkdir "$project_name"
     cd "$project_name" || exit
     mkdir src
-    mkdir test
+    mkdir tests
     mkdir docs
     mkdir lib
     mkdir data
@@ -65,60 +65,6 @@ create_project_structure() {
     echo "This is the $project_name project." >> README.md
     touch requirements.txt
     touch .env.example
-    # Copy .gitignore template
-    cat <<EOF > .gitignore
-# Ignore system files and directories
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Ignore IDE and editor files
-.vscode/
-.idea/
-*.sublime-workspace
-*.suo
-*.cache/
-*.log
-
-# Ignore build and compiled files
-node_modules/
-bower_components/
-*.log
-*.tmp
-*.temp
-*.swp
-*.out
-*.class
-*.dll
-*.exe
-*.pdb
-*.jar
-*.war
-*.ear
-*.egg
-*.egg-info/
-*.pyc
-*.pyo
-*.pyc/
-
-# Ignore dependency manifests
-package-lock.json
-yarn.lock
-Gemfile.lock
-composer.lock
-pipfile.lock
-
-# Ignore sensitive or environment-specific information
-.env
-.env.local
-.env.*.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Ignore miscellaneous
-*.DS_Store
-EOF
 
     # Add a default LICENSE file (MIT License)
     cat <<EOF > LICENSE
