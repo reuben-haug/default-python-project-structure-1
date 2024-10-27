@@ -143,9 +143,6 @@ create_project_structure "$ENV_NAME"
 # Process template files
 process_template_files "$ENV_NAME"
 
-# Enable write permissions for project_template.sh
-chmod +x project_template.sh
-
 # Install packages listed in requirements.txt
 pip install -r requirements.txt
 
