@@ -1,4 +1,4 @@
-# Default Python Project Structure Template
+# {{ project_name }}
 
 This repository is a template repository for Agile Python projects for personal portfolio projects. The template has a default folder structure with commonly used sub-directories such as `docs`, `notebook`, `src`, and `tests`. The template also includes a `.gitignore`, `README`, and `LICENSE` file with the MIT license.
 
@@ -7,7 +7,7 @@ This repository is a template repository for Agile Python projects for personal 
 The folder structure of the template is as follows:
 
 ```
-default-python-project-structure/
+{{ project_name }}/
 │
 ├── docs/
 │
@@ -37,8 +37,8 @@ default-python-project-structure/
 
 3. **Clone the repository**:
     ```sh
-    git clone https://github.com/reuben-haug/default-python-project-structure.git
-    cd default-python-project-structure
+    git clone https://github.com/{{ github_username }}/{{ project_name }}.git
+    cd {{ project_name }}
     ```
 
 4. **Initialize the project structure**:
@@ -108,12 +108,7 @@ default-python-project-structure/
 
 The `requirements.txt` file includes the necessary packages with appropriate version numbers:
 ```
-sphinx==4.2.0
-pytest==6.2.5
-flake8==3.9.2
-mypy==0.910
-tox==3.24.4
-black==21.9b0
+{{ dependencies }}
 ```
 
 ## Documentation
@@ -135,7 +130,7 @@ If you encounter any issues during the template installation, follow these steps
         ```
 
 2. **Ensure the directory exists**:
-    - Verify that the directory `/workspaces/default-python-project-structure-1/.pixi/envs` exists or update your configuration to point to the correct directory.
+    - Verify that the directory `/workspaces/{{ project_name }}/.pixi/envs` exists or update your configuration to point to the correct directory.
 
 3. **Verify Python interpreter path**:
     - Ensure that the Python interpreter path set in `.vscode/settings.json` and `.devcontainer/devcontainer.json` is correct and the interpreter is accessible.
@@ -170,8 +165,8 @@ We welcome contributions to improve this template repository. To contribute, fol
 
 2. **Clone your forked repository**:
     ```sh
-    git clone https://github.com/<your-username>/default-python-project-structure.git
-    cd default-python-project-structure
+    git clone https://github.com/{{ github_username }}/{{ project_name }}.git
+    cd {{ project_name }}
     ```
 
 3. **Create a new branch**:
@@ -219,8 +214,8 @@ Thank you for contributing to this project!
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/reuben-haug/default-python-project-structure.git
-    cd default-python-project-structure
+    git clone https://github.com/{{ github_username }}/{{ project_name }}.git
+    cd {{ project_name }}
     ```
 
 2. **Create a virtual environment**:
@@ -356,3 +351,103 @@ To ensure that the Sphinx documentation in the `docs` directory is comprehensive
     - Regularly review and update the documentation to ensure it remains accurate and comprehensive.
 
 By following these steps, you can enhance the documentation and provide more detailed instructions and examples for setting up and using the project.
+
+## Instructions for Using the Template and Replacing Placeholders
+
+To use this template and replace placeholders with your project-specific details, follow these steps:
+
+1. **Clone the repository**:
+    ```sh
+    git clone https://github.com/{{ github_username }}/{{ project_name }}.git
+    cd {{ project_name }}
+    ```
+
+2. **Replace placeholders in the template files**:
+    - Open the template files (e.g., `README.md`, `LICENSE`, `requirements.txt`) and replace the placeholders (e.g., `{{ project_name }}`, `{{ author }}`, `{{ year }}`) with your project-specific details.
+
+3. **Run the `project_template.sh` script**:
+    - The `project_template.sh` script will automatically process the template files and replace the placeholders with your project-specific details.
+
+4. **Customize the template**:
+    - Modify the template files to reflect the specifics of your new project.
+
+5. **Initialize a new Git repository**:
+    - Initialize a new Git repository if not already done by the script:
+        ```sh
+        git init
+        ```
+    - Commit your changes:
+        ```sh
+        git add .
+        git commit -m "Initial commit"
+        ```
+
+6. **Set up version control**:
+    - Set up version control for your new project by creating a new repository on GitHub and pushing your changes to the remote repository.
+
+7. **Install dependencies**:
+    - Install the required packages listed in `requirements.txt`:
+        ```sh
+        pip install -r requirements.txt
+        ```
+
+8. **Set up Sphinx documentation**:
+    - Initialize the Sphinx documentation in the `docs` directory:
+        ```sh
+        cd docs
+        sphinx-quickstart
+        ```
+
+9. **Build the documentation**:
+    - Build the documentation using Sphinx:
+        ```sh
+        make html
+        ```
+
+10. **Run tests**:
+    - Write tests in the `tests` directory and use pytest to run them:
+        ```sh
+        pytest
+        ```
+
+11. **Lint and format code**:
+    - Use flake8 for linting:
+        ```sh
+        flake8 .
+        ```
+    - Use black for code formatting:
+        ```sh
+        black .
+        ```
+
+12. **Set up continuous integration**:
+    - Set up a CI pipeline using GitHub Actions or another CI tool to automate testing and linting.
+
+By following these steps, you can use the template and replace placeholders with your project-specific details to create a new project.
+
+## Updating the README.md to Reflect Repository Changes
+
+To update the `README.md` to reflect the changes made to the repository, follow these steps:
+
+1. **Update the folder structure**:
+    - Ensure that the folder structure in the `README.md` matches the actual folder structure of the repository.
+
+2. **Update the installation steps**:
+    - Ensure that the installation steps in the `README.md` are accurate and up-to-date.
+
+3. **Update the requirements**:
+    - Ensure that the `requirements.txt` file includes the necessary packages with appropriate version numbers.
+
+4. **Update the documentation**:
+    - Ensure that the `docs` directory contains the necessary Sphinx documentation files.
+
+5. **Update the troubleshooting section**:
+    - Ensure that the troubleshooting section in the `README.md` includes accurate and up-to-date information.
+
+6. **Update the contributing section**:
+    - Ensure that the contributing section in the `README.md` includes accurate and up-to-date information.
+
+7. **Update the detailed instructions and examples**:
+    - Ensure that the detailed instructions and examples in the `README.md` are accurate and up-to-date.
+
+By following these steps, you can update the `README.md` to reflect the changes made to the repository.
