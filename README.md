@@ -212,3 +212,147 @@ We welcome contributions to improve this template repository. To contribute, fol
     - Once your pull request is approved, it will be merged into the main repository.
 
 Thank you for contributing to this project!
+
+## Detailed Instructions and Examples
+
+### Setting Up the Project
+
+1. **Clone the repository**:
+    ```sh
+    git clone https://github.com/reuben-haug/default-python-project-structure.git
+    cd default-python-project-structure
+    ```
+
+2. **Create a virtual environment**:
+    ```sh
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
+
+3. **Install dependencies**:
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+4. **Initialize the project structure**:
+    - The `project_template.sh` script will automatically create the project structure, including directories like `src`, `tests`, `docs`, `lib`, `data`, `scripts`, `config`, `bin`, `assets`, and `notebook`.
+    - Essential files like `README.md`, `requirements.txt`, `.env.example`, `.gitignore`, and `LICENSE` will also be created.
+
+### Using the Project
+
+1. **Running the application**:
+    - Navigate to the `src` directory and run the main application file:
+        ```sh
+        cd src
+        python main.py
+        ```
+
+2. **Running tests**:
+    - Navigate to the `tests` directory and run the tests using pytest:
+        ```sh
+        cd tests
+        pytest
+        ```
+
+3. **Building the documentation**:
+    - Navigate to the `docs` directory and build the documentation using Sphinx:
+        ```sh
+        cd docs
+        make html
+        ```
+
+### Examples
+
+1. **Example script**:
+    - Create a new script in the `scripts` directory:
+        ```sh
+        touch scripts/example_script.py
+        ```
+    - Add the following content to the script:
+        ```python
+        def main():
+            print("Hello, World!")
+
+        if __name__ == "__main__":
+            main()
+        ```
+
+2. **Example test**:
+    - Create a new test file in the `tests` directory:
+        ```sh
+        touch tests/test_example.py
+        ```
+    - Add the following content to the test file:
+        ```python
+        def test_example():
+            assert 1 + 1 == 2
+        ```
+
+3. **Example Jupyter notebook**:
+    - Create a new Jupyter notebook in the `notebook` directory:
+        ```sh
+        touch notebook/example_notebook.ipynb
+        ```
+    - Add the following content to the notebook:
+        ```markdown
+        # Example Jupyter Notebook
+
+        This is an example Jupyter notebook to demonstrate the usage of the `notebook` directory in the default Python project structure template.
+
+        ## Data Generation
+
+        Let's generate some example data to work with.
+
+        ```python
+        import numpy as np
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        %matplotlib inline
+
+        # Generate example data
+        data = {
+            'A': np.random.randn(100),
+            'B': np.random.randn(100) * 2,
+            'C': np.random.randn(100) + 1
+        }
+        df = pd.DataFrame(data)
+        df.head()
+        ```
+
+        ## Data Visualization
+
+        Now, let's create some visualizations to analyze the data.
+
+        ```python
+        # Plot histograms of the data
+        df.hist(figsize=(10, 8))
+        plt.show()
+        ```
+
+        ```python
+        # Plot scatter matrix
+        pd.plotting.scatter_matrix(df, figsize=(12, 10))
+        plt.show()
+        ```
+        ```
+
+## Enhancing Documentation
+
+To ensure that the Sphinx documentation in the `docs` directory is comprehensive and up-to-date, follow these steps:
+
+1. **Update `index.rst`**:
+    - Ensure that the `index.rst` file includes all necessary sections and references.
+
+2. **Add new sections**:
+    - Add new sections to the documentation as needed, such as `architecture`, `design_decisions`, `how_to_test_it`, and `how_to_use_it`.
+
+3. **Generate HTML documentation**:
+    - Navigate to the `docs` directory and run the following command to generate the HTML documentation:
+        ```sh
+        make html
+        ```
+
+4. **Review and update**:
+    - Regularly review and update the documentation to ensure it remains accurate and comprehensive.
+
+By following these steps, you can enhance the documentation and provide more detailed instructions and examples for setting up and using the project.
