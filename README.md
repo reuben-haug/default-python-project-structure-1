@@ -21,7 +21,7 @@ default-python-project-structure/
 ├── LICENSE
 ├── README.md
 ├── requirements.txt
-└── Dockerfile
+└── .devcontainer/
 ```
 
 ## Installation Steps
@@ -41,32 +41,22 @@ default-python-project-structure/
     cd default-python-project-structure
     ```
 
-4. **Build the Docker container**:
-    ```sh
-    docker build -t default-python-project-structure .
-    ```
-
-5. **Run the Docker container**:
-    ```sh
-    docker run -it --rm -v $(pwd):/app default-python-project-structure
-    ```
-
-6. **Initialize the project structure**:
-    - The `Dockerfile` will automatically create the project structure, including directories like `src`, `tests`, `docs`, `lib`, `data`, `scripts`, `config`, `bin`, `assets`, and `notebook`.
+4. **Initialize the project structure**:
+    - The `.devcontainer/Dockerfile` will automatically create the project structure, including directories like `src`, `tests`, `docs`, `lib`, `data`, `scripts`, `config`, `bin`, `assets`, and `notebook`.
     - Essential files like `README.md`, `requirements.txt`, `.env.example`, `.gitignore`, and `LICENSE` will also be created.
 
-7. **Install dependencies**:
+5. **Install dependencies**:
     - The `postCreateCommand` in `.devcontainer/devcontainer.json` will install the required packages listed in `requirements.txt`.
 
-8. **Set up Sphinx documentation**:
-    - The `Dockerfile` will install Sphinx and initialize the documentation in the `docs` directory.
+6. **Set up Sphinx documentation**:
+    - The `.devcontainer/Dockerfile` will install Sphinx and initialize the documentation in the `docs` directory.
     - The `index.rst` file in the `docs` directory will be updated to include the necessary sections.
 
-9. **Customize the template**:
+7. **Customize the template**:
     - Modify the `process_template_files` function in `project_template.sh` to replace placeholders with your project-specific details.
     - Update the `README.md` and `docs/overview.rst` files to reflect the specifics of your new project.
 
-10. **Use Poetry for dependency management**:
+8. **Use Poetry for dependency management**:
     - Initialize a new Poetry environment:
         ```sh
         poetry init
@@ -76,7 +66,7 @@ default-python-project-structure/
         poetry add <dependency>
         ```
 
-11. **Set up version control**:
+9. **Set up version control**:
     - Initialize a new Git repository if not already done by the script:
         ```sh
         git init
@@ -87,7 +77,7 @@ default-python-project-structure/
         git commit -m "Initial commit"
         ```
 
-12. **Documentation**:
+10. **Documentation**:
     - Use Sphinx to generate and maintain project documentation. The `docs` directory already contains the necessary files to get started.
     - Build the documentation:
         ```sh
@@ -95,13 +85,13 @@ default-python-project-structure/
         make html
         ```
 
-13. **Testing**:
+11. **Testing**:
     - Write tests in the `tests` directory and use pytest to run them:
         ```sh
         pytest
         ```
 
-14. **Linting and formatting**:
+12. **Linting and formatting**:
     - Use flake8 for linting:
         ```sh
         flake8 .
@@ -111,7 +101,7 @@ default-python-project-structure/
         black .
         ```
 
-15. **Continuous integration**:
+13. **Continuous integration**:
     - Set up a CI pipeline using GitHub Actions or another CI tool to automate testing and linting.
 
 ## Requirements
