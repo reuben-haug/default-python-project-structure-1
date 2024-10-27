@@ -1,7 +1,6 @@
 {
     "name": "Python Development Environment",
-    "dockerComposeFile": "../docker-compose.yml",
-    "service": "app",
+    "dockerFile": "Dockerfile",
     "customizations": {
         "vscode": {
             "settings": {
@@ -19,5 +18,6 @@
         "codespaces": {
             "disableAutomaticConfiguration": true
         }
-    }
+    },
+    "postCreateCommand": "pip install -r /app/requirements.txt"
 }
