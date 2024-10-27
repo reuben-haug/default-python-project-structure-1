@@ -11,16 +11,10 @@
                 "python.formatting.provider": "black"
             },
             "extensions": [
-            },
-            "extensions": [
                 "ms-python.python",
                 "ms-python.vscode-pylance"
             ]
         }
     },
-    "postCreateCommand": "pip install -r requirements.txt"
-}
-        }
-    }
     "postCreateCommand": "pip install -r requirements.txt"
 }
