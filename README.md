@@ -104,6 +104,34 @@ The folder structure of the template is as follows:
 13. **Continuous integration**:
     - Set up a CI pipeline using GitHub Actions or another CI tool to automate testing and linting.
 
+## Using Docker Compose
+
+To set up the project using Docker Compose, follow these steps:
+
+1. **Install Docker and Docker Compose**:
+    - Ensure that Docker and Docker Compose are installed on your system. You can download and install them from the official Docker website.
+
+2. **Clone the repository**:
+    ```sh
+    git clone https://github.com/{{ github_username }}/{{ project_name }}.git
+    cd {{ project_name }}
+    ```
+
+3. **Start the services**:
+    - Use Docker Compose to start the application and database services:
+    ```sh
+    docker-compose up
+    ```
+
+4. **Access the application**:
+    - The application will be accessible at `http://localhost:8000`.
+
+5. **Stop the services**:
+    - To stop the services, use the following command:
+    ```sh
+    docker-compose down
+    ```
+
 ## Requirements
 
 The `requirements.txt` file includes the necessary packages with appropriate version numbers:
