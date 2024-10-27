@@ -14,7 +14,6 @@ desktop.ini
 # Ignore build and compiled files
 node_modules/
 bower_components/
-*.log
 *.tmp
 *.temp
 *.swp
@@ -30,7 +29,6 @@ bower_components/
 *.egg-info/
 *.pyc
 *.pyo
-*.pyc/
 
 # Ignore dependency manifests
 package-lock.json
@@ -48,55 +46,3 @@ pipfile.lock
 .env.production.local
 
 # Ignore miscellaneous
-*.DS_Store
-# Ignore system files and directories
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Ignore IDE and editor files
-.vscode/
-.idea/
-*.sublime-workspace
-*.suo
-*.cache/
-*.log
-
-# Ignore build and compiled files
-node_modules/
-bower_components/
-*.log
-*.tmp
-*.temp
-*.swp
-*.out
-*.class
-*.dll
-*.exe
-*.pdb
-*.jar
-*.war
-*.ear
-*.egg
-*.egg-info/
-*.pyc
-*.pyo
-*.pyc/
-
-# Ignore dependency manifests
-package-lock.json
-yarn.lock
-Gemfile.lock
-composer.lock
-pipfile.lock
-
-# Ignore sensitive or environment-specific information
-.env
-.env.local
-.env.*.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Ignore miscellaneous
-*.DS_Store
