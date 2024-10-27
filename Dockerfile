@@ -20,6 +20,18 @@ RUN apt-get update && \
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Create project structure
+RUN mkdir -p /app/src /app/tests /app/docs /app/lib /app/data /app/scripts /app/config /app/bin /app/assets /app/notebook
+
+# Install Sphinx
+RUN pip install sphinx
+
+# Initialize Sphinx documentation
+RUN sphinx-quickstart -q -p "Default Python Project Structure" -a "Reuben Haug" --ext-autodoc --ext-viewcode --ext-napoleon --makefile --sep /app/docs
+
+# Update index.rst
+RUN echo "\n   overview\n   api" >> /app/docs/source/index.rst
+
 # Copy the rest of the application code
 COPY . /app/
 

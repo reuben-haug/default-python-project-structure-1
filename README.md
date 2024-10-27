@@ -21,7 +21,7 @@ default-python-project-structure/
 ├── LICENSE
 ├── README.md
 ├── requirements.txt
-└── project_template.sh
+└── Dockerfile
 ```
 
 ## Installation Steps
@@ -32,24 +32,14 @@ default-python-project-structure/
     cd default-python-project-structure
     ```
 
-2. **Enable write permissions for the `project_template.sh` script**:
+2. **Build the Docker container**:
     ```sh
-    sudo chmod +x project_template.sh
+    docker build -t default-python-project-structure .
     ```
 
-3. **Run the `project_template.sh` script**:
+3. **Run the Docker container**:
     ```sh
-    ./project_template.sh
-    ```
-
-4. **Add the `$USER` to the 'docker' group**:
-    ```sh
-    sudo usermod -aG docker $USER
-    ```
-
-5. **Run the `newgrp docker` command to avoid logging out**:
-    ```sh
-    newgrp docker
+    docker run -it --rm -v $(pwd):/app default-python-project-structure
     ```
 
 ## Requirements
